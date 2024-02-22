@@ -8,6 +8,7 @@ use App\Models\Product;
 use App\Models\Quiz;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ProductDetailsController extends Controller
 {
@@ -16,13 +17,17 @@ class ProductDetailsController extends Controller
      */
     public function index($id)
     {
-        $student_id = Auth::guard('student')->user()->id;
-        $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->first();
+        // $student_id = Auth::guard('student')->user()->id;
+        // $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->first();
         $products = Product::find($id);
         $products->load('lesson');
         $quiz = Quiz::all();
         $quiz = $products->quiz;
-        return view('frontend.productDetails', compact('products', 'ordered', 'quiz'));
+        // return view('frontend.productDetails', compact('products', 'ordered', 'quiz'));
+        return Inertia::render('ProductDetails', 
+        [
+            'products' => $products,
+        ]);
     }
 
     /**

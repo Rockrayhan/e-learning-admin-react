@@ -36,8 +36,9 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/all-courses', [HomeController::class, 'allcourses']);
-Route::get('/product/details/{id}', [ProductDetailsController::class, 'index'])->name('product.details')->middleware('student');
-;
+Route::get('/productDetails/{id}', [ProductDetailsController::class, 'index'])->name('productDetails');
+
+// ->middleware('student')
 
 
 

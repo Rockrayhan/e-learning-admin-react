@@ -25,6 +25,10 @@
     <link rel="stylesheet" href="assets/css/slick.css">
     <link rel="stylesheet" href="assets/css/nice-select.css">
     <link rel="stylesheet" href="assets/css/style.css">
+
+
+       <!-- CSS here -->
+   <link rel="stylesheet" href="assets/css/hamburgers.min.css">
     <style>
         body{
             overflow-x: hidden !important;

@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Manufacturer;
 use App\Models\Product;
 use App\Models\Review;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 
@@ -19,14 +20,15 @@ class HomeController extends Controller
     {   $manufacturers = Manufacturer::all();
         $products = Product::all();
         $reviews = Review::where('status', 1)->get();
-        $imageBaseUrl = asset(''); // This will provide the base URL of your Laravel application
+        $categories = Category::all();
+        $students = Student::all();
         return Inertia::render('Home', 
         [
             'manufacturers' => $manufacturers,
             'products' => $products,
             'reviews' => $reviews,
-            'imageBaseUrl' => $imageBaseUrl,
-
+            'categories' => $categories,
+            'students' => $students,
         ]);
     }
     
