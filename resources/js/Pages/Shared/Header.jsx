@@ -24,8 +24,8 @@ const Header = () => {
                     <nav>
                       <ul id="navigation">                                                                                          
                         <li className="active"><NavLink href={route('home')}>Home</NavLink></li>
-                        <li><a href="courses.html">Courses</a></li>
                         <li><NavLink href={route('about')}>About</NavLink></li>
+                        <li><a href="courses.html">Courses</a></li>
                         <li><a href="#">Blog</a>
                           <ul className="submenu">
                             <li><a href="blog.html">Blog</a></li>
