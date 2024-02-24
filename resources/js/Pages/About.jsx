@@ -8,10 +8,10 @@ const About = () => {
            <Header></Header>
        <div>
   {/*? slider Area Start*/}
-  <section className="slider-area slider-area2">
-    <div className="slider-active">
+  <section className=" slider-area2">
+    <div className="">
       {/* Single Slider */}
-      <div className="single-slider slider-height2">
+      <div className="slider-height2">
         <div className="container">
           <div className="row">
             <div className="col-xl-8 col-lg-11 col-md-12">
