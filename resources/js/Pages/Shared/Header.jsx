@@ -1,26 +1,26 @@
 import NavLink from '@/Components/NavLink';
 // import React from 'react';
 import logo from '../../../../public/assets/img/logo/logo.png';
-import { Link } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const Header = () => {
 
-  const [user, setUser] = useState(null);
+  // const [user, setUser] = useState(null);
 
-  useEffect(() => {
-      const fetchUserData = async () => {
-          try {
-              const response = await axios.get('/api/student');
-              setUser(response.data);
-          } catch (error) {
-              console.error('Error fetching user data:', error);
-          }
-      };
+  // useEffect(() => {
+  //     const fetchUserData = async () => {
+  //         try {
+  //             const response = await axios.get('/api/student');
+  //             setUser(response.data);
+  //         } catch (error) {
+  //             console.error('Error fetching user data:', error);
+  //         }
+  //     };
 
-      fetchUserData();
-  }, []);
+  //     fetchUserData();
+  // }, []);
     return (
         <>
 <header>

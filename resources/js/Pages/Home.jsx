@@ -7,9 +7,10 @@ import Footer from './Shared/Footer';
 
 
 const Home = (props) => {
-    const {products, categories, reviews, students } = usePage().props ;
+    const {products, categories, reviews, students, user } = usePage().props ;
     // console.log(products);
-    console.log(reviews);
+    // console.log(reviews);
+    console.log(user);
 
 
     const CategoryName = (id) => {

@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Models\Review;
 use App\Models\Student;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -22,6 +23,7 @@ class HomeController extends Controller
         $reviews = Review::where('status', 1)->get();
         $categories = Category::all();
         $students = Student::all();
+        $user = Auth::guard('student')->check();
         return Inertia::render('Home', 
         [
             'manufacturers' => $manufacturers,
@@ -29,6 +31,7 @@ class HomeController extends Controller
             'reviews' => $reviews,
             'categories' => $categories,
             'students' => $students,
+            'user' => $user,
         ]);
     }
     
