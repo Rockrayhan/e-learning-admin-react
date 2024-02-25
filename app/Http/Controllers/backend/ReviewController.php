@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Review;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Inertia;
 
 class ReviewController extends Controller
 {
@@ -24,7 +25,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        return view('frontend.review') ;
+        return Inertia::render('Review');
     }
 
     /**
@@ -32,10 +33,10 @@ class ReviewController extends Controller
      */
     public function store(Request $request)
     {
-        $data  = ['name' => $request->name,
+        $data  = [   'name' => $request->name,
                     'student_id'=>$request->student_id,
                     'occupation'=>$request->occupation,
-                    'description'=>$request->description,
+                    // 'description'=>$request->description,
                     'description'=>$request->description,
                     'rating'=>$request->rating,
     ];
@@ -45,6 +46,7 @@ class ReviewController extends Controller
             return redirect()->back()->with('msg' , 'Successfully Review added');
         }
     }
+
 
     /**
      * Display the specified resource.

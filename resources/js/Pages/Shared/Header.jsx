@@ -52,7 +52,7 @@ const Header = () => {
                               <li><a href="/instructor/dashboard">Instructor</a></li>
                             </ul>
                           </li>
-                          <li><NavLink href="/contact">Contact</NavLink></li>
+                          <li><NavLink href="/review/create"> Review </NavLink></li>
                           {/* Button */}
                           <li className="button-header margin-left "><a href="" className="btn">Name</a></li>
                           <li className="button-header"><a href="/student/login" className="btn btn3">Log in</a></li>
