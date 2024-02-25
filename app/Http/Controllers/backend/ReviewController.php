@@ -50,13 +50,13 @@ class ReviewController extends Controller
      * Display the specified resource.
      */
 
-     public function myReview()
-     {
-        $student_id = Auth::guard('student')->user()->id;
-        // $lesson = Lesson::where('instructor_id', $instrutor_id)->get();
-        $myreview = Review::where('student_id', $student_id)->get();
-         return view('frontend.review', compact('myreview')) ;
-     }
+    //  public function myReview()
+    //  {
+    //     $student_id = Auth::guard('student')->user()->id;
+    //     // $lesson = Lesson::where('instructor_id', $instrutor_id)->get();
+    //     $myreview = Review::where('student_id', $student_id)->get();
+    //      return view('frontend.review', compact('myreview')) ;
+    //  }
 
 
     public function show(string $id)
