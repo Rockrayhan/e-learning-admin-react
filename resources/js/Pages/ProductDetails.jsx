@@ -60,7 +60,7 @@ const ProductDetails = (props) => {
 
           {/* Pro Content  */}
           <h1> Pro Content </h1>
-          <div className="row" style={{ marginTop: '60px', marginBottom: '60px' }}>
+          {/* <div className="row" style={{ marginTop: '60px', marginBottom: '60px' }}>
       <div className="col-3 border border-success p-4">
         <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
           {products.lesson.map((lesson, index) => (
@@ -108,7 +108,9 @@ const ProductDetails = (props) => {
 
         </div>
       </div>
-    </div>
+    </div> */}
+
+
 
           <div className="comment-form">
             <h4>Leave a Reply</h4>
@@ -144,7 +146,7 @@ const ProductDetails = (props) => {
         <div className="col-lg-4">
           <div className="blog_right_sidebar">
             <aside className="single_sidebar_widget post_category_widget">
-              <h4 className="widget_title" style={{color: '#2d2d2d'}}>Topics</h4>
+              <h4 className="widget_title" style={{color: '#2d2d2d'}}>  <b>Topics</b> </h4>
               <ul className="list cat-list">
  
               <ul>

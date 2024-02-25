@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{asset('assets/css/slick.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/nice-select.css')}}">
     <link rel="stylesheet" href="{{asset('assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('assets/css/style.css')}}"> --}}
 
 
        <!-- CSS here -->
@@ -37,9 +37,6 @@
             padding: 80px
         }
 
-        a {
-            color: black !important
-        }
         .top-bar{
             background-color: rgba(87, 110, 241, 0.675)
         }

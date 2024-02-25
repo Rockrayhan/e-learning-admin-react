@@ -8,11 +8,16 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
 
 class StudentController extends Controller
 {
     public function index(){
-        return view('backend.student.login');
+
+        return Inertia::render('Login');
+
+        // return view('backend.student.login');
+
     }
 
     public function create(){
