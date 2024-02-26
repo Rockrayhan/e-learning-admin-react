@@ -52,7 +52,8 @@ const MyCourses = ({ userData, products }) => {
                 </div>
               </div>
 {
-    products.length > 0 ?                <div className="row">
+    products.length > 0 ?                
+    <div className="row">
               
         
     {

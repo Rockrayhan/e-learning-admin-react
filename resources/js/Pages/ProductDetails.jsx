@@ -163,59 +163,46 @@ const ProductDetails = ({products,userData, ordered}) => {
 </div>
 
 
-
+{/* pro Content Available only for Purchased one */}
 {
   ordered && 
-  <div className="row" style={{ marginTop: '60px', marginBottom: '60px' }}>
-    <h1> Pro Content </h1>
-<div className="col-3 border border-success p-4">
-<div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-  {products.lesson.map((lesson, index) => (
-    <a
-      key={index}
-      className={`nav-link border border-info ${index === 0 ? 'active' : ''}`}
-      id={`v-pills-${index}-tab`}
-      data-toggle="pill"
-      href={`#v-pills-${index}`}
-      role="tab"
-      aria-controls={`v-pills-${index}`}
-      aria-selected={index === 0 ? 'true' : 'false'}
-    >
-      {lesson.name}
-    </a>
-  ))}
+<div className="row" style={{ marginTop: '60px', marginBottom: '60px' }}>
+  <h1> Pro Content </h1>
+  <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+    {products.lesson.map((lesson, index) => (
+      <a
+        key={index}
+        className={index === 0 ? "nav-link active" : "nav-link"} // Assuming you want the first lesson to be active initially
+        id={`v-pills-${index}-tab`}
+        data-toggle="pill"
+        href={`#v-pills-${index}`}
+        role="tab"
+        aria-controls={`v-pills-${index}`}
+        aria-selected={index === 0 ? "true" : "false"} // Assuming you want the first lesson to be selected initially
+      >
+        {lesson.name}
+      </a>
+    ))}
+  </div>
+  <div className="tab-content" id="v-pills-tabContent">
+    {products.lesson.map((lesson, index) => (
+      <div
+        key={index}
+        className={index === 0 ? "tab-pane fade show active" : "tab-pane fade"}
+        id={`v-pills-${index}`}
+        role="tabpanel"
+        aria-labelledby={`v-pills-${index}-tab`}
+      >
+        <p>
+          <div className="bg-primary">
+            {lesson.description} kir mamam
+          </div>
+        </p>
+      </div>
+    ))}
+  </div>
 </div>
-</div>
-<div className="col-9">
-<div className="tab-content border border-info p-4" id="v-pills-tabContent">
-{products.lesson.map((lesson, index) =>  (
-<div key={index}>
-<h3>{lesson.name}</h3>
-{lesson.description ? (
-<p>{lesson.description}</p>
-) : (
-<p>No description available</p>
-)}
-{lesson.video && (
-<div>
-  <iframe
-    width="400"
-    height="315"
-    src={lesson.video}
-    title="YouTube video player"
-    frameBorder="0"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    allowFullScreen
-  ></iframe>
-</div>
-)}
-</div>
-)
-)}
 
-</div>
-</div>
-</div>
 
 }
 

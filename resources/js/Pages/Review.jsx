@@ -8,7 +8,7 @@ const Review = ({myreview, userData}) => {
   const { user, token } = userData;
   // console.log(myreview);
   console.log(user?.id);
-    const { data, setData, post } = useForm({});
+    const { data, setData, post } = useForm();
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -25,9 +25,10 @@ const Review = ({myreview, userData}) => {
             <h4>Leave a Reply</h4>
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
             <input type="hidden" name="_token" value={token} />
-                <div className="form-group mb-3">
-                <input type="text" name="student_id" defaultValue={user.id} />
-                </div>
+
+            {/* student ID */}
+            <input type="text" name="student_id" defaultValue={ user.id } /> <br />
+
                 <div className="form-group mb-3">
                   <label htmlFor="name" className="font-weight-bold">Review title</label>
                   <input type="text" name="name" className="form-control" required placeholder="Give Your Review Titel" onChange={(e) => setData("name", e.target.value)} />
