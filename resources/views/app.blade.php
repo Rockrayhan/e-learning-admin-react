@@ -44,6 +44,9 @@
         header {
             background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%) !important ;
         }
+        .course-content{
+            color: #c054ff !important;
+        }
     </style>
 
     <!-- Scripts -->

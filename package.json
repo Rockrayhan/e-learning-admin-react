@@ -21,6 +21,8 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "bootstrap": "^4.6.0",
+        "react-bootstrap": "^2.10.1",
         "react-owl-carousel": "^2.3.3"
     }
 }

@@ -3,6 +3,7 @@ import '../css/app.css';
 
 // for faster rendering
 import '../../public/assets/css/style.css'
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 

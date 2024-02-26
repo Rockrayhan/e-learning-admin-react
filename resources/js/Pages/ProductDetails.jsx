@@ -4,6 +4,7 @@ import { usePage } from '@inertiajs/react';
 import NavLink from '@/Components/NavLink';
 import Header from './Shared/Header';
 import { useForm } from '@inertiajs/react';
+import { Col, Nav, Row, Tab } from 'react-bootstrap';
 
 const ProductDetails = ({products,userData, ordered}) => {
   const { data, setData, post } = useForm();
@@ -166,42 +167,38 @@ const ProductDetails = ({products,userData, ordered}) => {
 {/* pro Content Available only for Purchased one */}
 {
   ordered && 
-<div className="row" style={{ marginTop: '60px', marginBottom: '60px' }}>
-  <h1> Pro Content </h1>
-  <div className="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-    {products.lesson.map((lesson, index) => (
-      <a
-        key={index}
-        className={index === 0 ? "nav-link active" : "nav-link"} // Assuming you want the first lesson to be active initially
-        id={`v-pills-${index}-tab`}
-        data-toggle="pill"
-        href={`#v-pills-${index}`}
-        role="tab"
-        aria-controls={`v-pills-${index}`}
-        aria-selected={index === 0 ? "true" : "false"} // Assuming you want the first lesson to be selected initially
-      >
-        {lesson.name}
-      </a>
-    ))}
-  </div>
-  <div className="tab-content" id="v-pills-tabContent">
-    {products.lesson.map((lesson, index) => (
-      <div
-        key={index}
-        className={index === 0 ? "tab-pane fade show active" : "tab-pane fade"}
-        id={`v-pills-${index}`}
-        role="tabpanel"
-        aria-labelledby={`v-pills-${index}-tab`}
-      >
-        <p>
-          <div className="bg-primary">
-            {lesson.description} kir mamam
-          </div>
-        </p>
-      </div>
-    ))}
-  </div>
+<div className='course-content'>
+<Tab.Container id="left-tabs-example" defaultActiveKey="tab-1">
+  <Row>
+    <Col sm={3}>
+      <Nav variant="pills" className="flex-column border-4 border-primary p-2">
+        {products.lesson.map((lesson, index) => (
+          <Nav.Item key={index}>
+            <Nav.Link className='bg-primary my-3' eventKey={`tab-${index + 1}`}>{lesson.name}</Nav.Link>
+          </Nav.Item>
+        ))}
+      </Nav>
+    </Col>
+    <Col sm={9}>
+      <Tab.Content className=' border-4 border-primary p-2'>
+        {products.lesson.map((lesson, index) => (
+          <Tab.Pane key={index} eventKey={`tab-${index + 1}`}>
+            {/* <Sonnet /> */}
+            
+            
+            <p className='text-primary'>{lesson.description}</p>
+
+            <div>
+            <iframe width="560" height="315" src={lesson.video} title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </Tab.Pane>
+        ))}
+      </Tab.Content>
+    </Col>
+  </Row>
+</Tab.Container>
 </div>
+
 
 
 }
