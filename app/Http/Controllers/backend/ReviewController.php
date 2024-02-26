@@ -41,7 +41,7 @@ class ReviewController extends Controller
     ];
 
         $model = new Review();
-        if ( $model->create($data) ){
+        if ( $model->insert($data) ){
             return redirect()->back()->with('msg' , 'Successfully Review added');
         }
     }

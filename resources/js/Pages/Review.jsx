@@ -8,7 +8,7 @@ const Review = ({myreview, userData}) => {
   const { user, token } = userData;
   // console.log(myreview);
   console.log(user?.id);
-    const { data, setData, post } = useForm();
+    const { data, setData, post } = useForm({});
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -24,8 +24,9 @@ const Review = ({myreview, userData}) => {
             <div className="comment-form">
             <h4>Leave a Reply</h4>
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+            <input type="hidden" name="_token" value={token} />
                 <div className="form-group mb-3">
-                <input type="hidden" name="student_id" defaultValue={user.id} />
+                <input type="text" name="student_id" defaultValue={user.id} />
                 </div>
                 <div className="form-group mb-3">
                   <label htmlFor="name" className="font-weight-bold">Review title</label>

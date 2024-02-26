@@ -25,7 +25,7 @@ const MyCourses = ({ userData, products }) => {
                   <div className="row">
                     <div className="col-xl-8 col-lg-11 col-md-12">
                       <div className="hero__caption hero__caption2">
-                        <h1>All courses</h1>
+                        <h1>My courses</h1>
                         {/* breadcrumb Start*/}
                         <nav aria-label="breadcrumb">
                           <ol className="breadcrumb">
