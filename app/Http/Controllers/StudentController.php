@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Student;
@@ -14,9 +15,9 @@ class StudentController extends Controller
 {
     public function index(){
 
-        return Inertia::render('Login');
+        // return Inertia::render('Login');
 
-        // return view('backend.student.login');
+        return view('backend.student.login');
 
     }
 
@@ -63,23 +64,35 @@ class StudentController extends Controller
 
     public function myCourses()
     {
-        $student_id = Auth::guard('student')->user()->id;
-        // $product = Order::where('student_id', $student_id)->get();
-        $product = Order::where('student_id', $student_id)
+        $user = Auth::guard('student')->user() ?? '';
+        $token = csrf_token();
+        $userData = [
+            'user' => $user,
+            'token' => $token,
+        ];
+        $categories = Category::all();
+        $student_id = Auth::guard('student')->user()->id;        
+        $products = Order::where('student_id', $student_id)
         ->where('status', 1)
         ->get();
-        return view('frontend.mycourses', compact('product'));
+        return Inertia::render('MyCourses', compact('products', 'userData', 'categories'));
     }
 
 
     public function myorders()
     {
+        $user = Auth::guard('student')->user() ?? '';
+        $token = csrf_token();
+        $userData = [
+            'user' => $user,
+            'token' => $token,
+        ];
         $student_id = Auth::guard('student')->user()->id;
         // $product = Order::where('student_id', $student_id)->get();
         $orders = Order::where('student_id', $student_id)
         ->where('status', 1)
         ->get();
-        return view('frontend.myorders', compact('orders'));
+        return Inertia::render('MyOrders', compact('orders', 'userData'));
     }
 
 
@@ -88,16 +101,9 @@ class StudentController extends Controller
     }
 
 
-    public function destroy (Request $request)
-    {
-        
+    public function destroy ()
+    {   
         Auth::guard('student')->logout();
-        
-
-        // $request->session()->invalidate();
-
-        // $request->session()->regenerateToken();
-
         return redirect('/');
     }
 }

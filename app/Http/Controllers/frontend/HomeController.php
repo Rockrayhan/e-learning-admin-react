@@ -23,7 +23,13 @@ class HomeController extends Controller
         $reviews = Review::where('status', 1)->get();
         $categories = Category::all();
         $students = Student::all();
-        $user = Auth::guard('student')->check();
+        // $checkUser = Auth::guard('student')->check();
+        $user = Auth::guard('student')->user() ?? '';
+        $token = csrf_token();
+        $userData = [
+            'user' => $user,
+            'token' => $token,
+        ];
         return Inertia::render('Home', 
         [
             'manufacturers' => $manufacturers,
@@ -31,13 +37,21 @@ class HomeController extends Controller
             'reviews' => $reviews,
             'categories' => $categories,
             'students' => $students,
-            'user' => $user,
+            'students' => $students,
+            'userData' => $userData,
+
         ]);
     }
     
 
     public function about()
     {
+        $user = Auth::guard('student')->user() ?? '';
+        $token = csrf_token();
+        $userData = [
+            'user' => $user,
+            'token' => $token,
+        ];
         return Inertia::render('About');
     
     }
@@ -45,9 +59,18 @@ class HomeController extends Controller
 
 
     public function allcourses()
+
     {  
+        $user = Auth::guard('student')->user() ?? '';
+        $token = csrf_token();
+        $userData = [
+            'user' => $user,
+            'token' => $token,
+        ];
         $products = Product::all();
-        return view('frontend.AllCourses', compact('products'));
+        $categories = Category::all();
+        // return view('frontend.AllCourses', compact('products'));
+        return Inertia::render('AllCourses' , compact('userData' ,'products', 'categories' ));
     }
     
 

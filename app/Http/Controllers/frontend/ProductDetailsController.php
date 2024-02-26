@@ -17,16 +17,25 @@ class ProductDetailsController extends Controller
      */
     public function index($id)
     {
-        // $student_id = Auth::guard('student')->user()->id;
-        // $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->first();
+        $student_id = Auth::guard('student')->user()->id;
+        $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->first();
         $products = Product::find($id);
         $products->load('lesson');
         $quiz = Quiz::all();
         $quiz = $products->quiz;
+        $user = Auth::guard('student')->user() ?? '';
+        $token = csrf_token();
+        $userData = [
+            'user' => $user,
+            'token' => $token,
+        ];
         // return view('frontend.productDetails', compact('products', 'ordered', 'quiz'));
         return Inertia::render('ProductDetails', 
         [
+            'user' => $user,
             'products' => $products,
+            'ordered' => $ordered,
+            'userData' => $userData,
         ]);
     }
 

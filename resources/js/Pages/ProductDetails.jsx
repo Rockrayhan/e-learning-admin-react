@@ -3,11 +3,13 @@ import Footer from './Shared/Footer';
 import { usePage } from '@inertiajs/react';
 import NavLink from '@/Components/NavLink';
 import Header from './Shared/Header';
-const ProductDetails = (props) => {
-    const {products} = usePage().props
+const ProductDetails = ({products,userData, ordered}) => {
+    // const {products} = usePage().props
+    const { user, token } = userData;
+    console.log(products);
     return (
         <div>
-            <Header></Header>
+            <Header userData={userData}></Header>
         <div>
   {/*? slider Area Start*/}
   <section className="slider-area2">
@@ -57,6 +59,9 @@ const ProductDetails = (props) => {
             </div>
           </div>
 
+      {
+        ordered ? <div> Your contents are here </div> : <div> Enroll Now </div>
+      }
 
           {/* Pro Content  */}
           <h1> Pro Content </h1>

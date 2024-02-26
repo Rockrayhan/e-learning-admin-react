@@ -5,27 +5,16 @@ import { Link, usePage } from '@inertiajs/react';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const Header = () => {
+const Header = ({userData}) => {
+  const { user, token } = userData;
+  console.log(user?.name);
 
-  // const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //     const fetchUserData = async () => {
-  //         try {
-  //             const response = await axios.get('/api/student');
-  //             setUser(response.data);
-  //         } catch (error) {
-  //             console.error('Error fetching user data:', error);
-  //         }
-  //     };
-
-  //     fetchUserData();
-  // }, []);
     return (
         <>
 <header>
       {/* Header Start */}
-      <div className="header-area header-transparent">
+      <div className="header-area">
         <div className="main-header ">
           <div className="header-bottom  header-sticky">
             <div className="container-fluid">
@@ -41,22 +30,40 @@ const Header = () => {
                     {/* Main-menu */}
                     <div className="main-menu d-none d-lg-block">
                       <nav>
-                        <ul id="navigation">
-                          <li className="active"><NavLink href="/">Home</NavLink></li>
-                          <li><NavLink href="/about">About</NavLink></li>
-                          <li><NavLink href="/mycourses">Courses</NavLink></li>
+                      <ul id="navigation">
+                      <li><NavLink href="/">Home</NavLink></li>
+                      <li><NavLink href="/about">About</NavLink></li>
+                      <li><NavLink href="/all-courses">All Courses</NavLink></li>
+
+                        {
+                         user ? 
+                         <span>
+                          <li><NavLink href="/student/mycourses">My Courses</NavLink></li>
+                          <li><NavLink href="/review/myreview"> Review </NavLink></li>
+                          <li><NavLink href="/student/myorders"> My Orders </NavLink></li>
+                          {/* <li><Link href={route('student.logout')} className="btn btn-danger">Log out</Link></li> */}
                           <li>
+                          <form method="POST" action={route('student.logout')}>
+                          <input type="hidden" name="_token" value={token} />
+                          <button type="submit" className="btn btn-danger">
+                          Log out
+                          </button>
+                          </form>
+                          </li>
+                         </span> 
+                        : 
+                        <span>
+                            <li className="button-header"><a href="/student/login" className="btn btn3">Log in</a></li>
+                          </span>
+                        }
+                        <li>
                             <a href="#">Admin | Instructor </a>
                             <ul className="submenu">
                               <li><a href="/admin/login">Admin</a></li>
                               <li><a href="/instructor/dashboard">Instructor</a></li>
                             </ul>
                           </li>
-                          <li><NavLink href="/review/create"> Review </NavLink></li>
-                          {/* Button */}
-                          <li className="button-header margin-left "><a href="" className="btn">Name</a></li>
-                          <li className="button-header"><a href="/student/login" className="btn btn3">Log in</a></li>
-                        </ul>
+                        </ul> 
                       </nav>
                     </div>
                   </div>

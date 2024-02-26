@@ -40,6 +40,10 @@
         .top-bar{
             background-color: rgba(87, 110, 241, 0.675)
         }
+
+        header {
+            background: linear-gradient(to bottom, #c054ff 0%, #5274ff 100%) !important ;
+        }
     </style>
 
     <!-- Scripts -->

@@ -36,7 +36,6 @@ class ReviewController extends Controller
         $data  = [   'name' => $request->name,
                     'student_id'=>$request->student_id,
                     'occupation'=>$request->occupation,
-                    // 'description'=>$request->description,
                     'description'=>$request->description,
                     'rating'=>$request->rating,
     ];
@@ -52,13 +51,19 @@ class ReviewController extends Controller
      * Display the specified resource.
      */
 
-    //  public function myReview()
-    //  {
-    //     $student_id = Auth::guard('student')->user()->id;
-    //     // $lesson = Lesson::where('instructor_id', $instrutor_id)->get();
-    //     $myreview = Review::where('student_id', $student_id)->get();
-    //      return view('frontend.review', compact('myreview')) ;
-    //  }
+     public function myReview()
+     {
+        $user = Auth::guard('student')->user() ?? '';
+        $token = csrf_token();
+        $userData = [
+            'user' => $user,
+            'token' => $token,
+        ];
+        $student_id = Auth::guard('student')->user()->id;
+        $myreview = Review::where('student_id', $student_id)->get();
+        //  return view('frontend.review', compact('myreview')) ;
+        return Inertia::render('Review', compact('myreview', 'userData'));
+     }
 
 
     public function show(string $id)

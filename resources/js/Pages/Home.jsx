@@ -7,10 +7,11 @@ import Footer from './Shared/Footer';
 
 
 const Home = (props) => {
-    const {products, categories, reviews, students, user } = usePage().props ;
+    const {products, categories, reviews, students, userData } = usePage().props ;
+    const { user, token } = userData;
     // console.log(products);
     // console.log(reviews);
-    console.log(user);
+    console.log(user.name);
 
 
     const CategoryName = (id) => {
@@ -25,11 +26,10 @@ const Home = (props) => {
 
 
     return (
-        <div>
+        <>
       <div>
 
-<Header></Header>
-  
+<Header userData={userData} ></Header>
   <main>
     {/*? slider Area Start*/}
     <section className="slider-area ">
@@ -431,7 +431,7 @@ const Home = (props) => {
 
   <Footer></Footer>
 </div>
-</div>
+</>
     );
 };
 

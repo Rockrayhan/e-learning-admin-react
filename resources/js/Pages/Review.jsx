@@ -4,8 +4,11 @@ import Header from './Shared/Header';
 import Footer from './Shared/Footer';
 import { useForm } from '@inertiajs/react';
 
-const Review = () => {
-    const { data, setData, post } = useForm({});
+const Review = ({myreview, userData}) => {
+  const { user, token } = userData;
+  // console.log(myreview);
+  console.log(user?.id);
+    const { data, setData, post } = useForm();
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -15,12 +18,15 @@ const Review = () => {
     return (
         <div>
 
-            <Header></Header> 
+            <Header userData={userData}></Header> 
             <h1> Give a review </h1>
 
             <div className="comment-form">
             <h4>Leave a Reply</h4>
             <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+                <div className="form-group mb-3">
+                <input type="hidden" name="student_id" defaultValue={user.id} />
+                </div>
                 <div className="form-group mb-3">
                   <label htmlFor="name" className="font-weight-bold">Review title</label>
                   <input type="text" name="name" className="form-control" required placeholder="Give Your Review Titel" onChange={(e) => setData("name", e.target.value)} />
@@ -54,6 +60,30 @@ const Review = () => {
               </form>
 
           </div>
+
+
+          <section className="mt-5 mb-5 container">
+  <h1> My reviews </h1>
+  <div className="list-group">
+    {
+      myreview.map( item =>  
+       <span className="list-group-item list-group-item-action flex-column align-items-start">
+      <div className="d-flex w-100 justify-content-between">
+        <h5 className="mb-1"> {item.name} </h5>
+        <small>3 days ago</small>
+      </div>
+      <div className="d-flex justify-content-between">
+        <p className="mb-1">  </p>
+        <span>
+          show stars
+        </span>
+      </div>
+    </span> )
+    }
+  
+    
+  </div></section>
+
           <Footer></Footer>
         </div>
     );
