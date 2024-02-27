@@ -56,7 +56,7 @@ const Home = (props) => {
       <div className="container">
         <div className="row justify-content-sm-center">
           <div className="col-lg-4 col-md-6 col-sm-8">
-            <div className="single-services mb-30">
+            <div className="single-services ">
               <div className="features-icon">
                 <img src="assets/img/icon/icon1.svg" alt />
               </div>
@@ -67,7 +67,7 @@ const Home = (props) => {
             </div>
           </div>
           <div className="col-lg-4 col-md-6 col-sm-8">
-            <div className="single-services mb-30">
+            <div className="single-services ">
               <div className="features-icon">
                 <img src="assets/img/icon/icon2.svg" alt />
               </div>
@@ -78,7 +78,7 @@ const Home = (props) => {
             </div>
           </div>
           <div className="col-lg-4 col-md-6 col-sm-8">
-            <div className="single-services mb-30">
+            <div className="single-services ">
               <div className="features-icon">
                 <img src="assets/img/icon/icon3.svg" alt />
               </div>
@@ -92,11 +92,11 @@ const Home = (props) => {
       </div>
     </div>
     {/* Courses area start */}
-    <div className="courses-area section-padding40 fix">
+    <div className="courses-area  ">
       <div className="container">
         <div className="row justify-content-center">
           <div className="col-xl-7 col-lg-8">
-            <div className="section-tittle text-center mb-55">
+            <div className="section-tittle text-center ">
               <h2>Our featured courses</h2>
             </div>
           </div>
@@ -105,9 +105,9 @@ const Home = (props) => {
           {/* Single */}
             {
                 products.map( item=>          
-                 <div className="properties pb-20">
+                 <div className="properties ">
                 <div className="properties__card">
-                  <div className="properties__img overlay1">
+                  <div style={{height:'500px'}} className="properties__img overlay1">
                     <a href="#"><img 
                     src={"images/" + item.image}
                     height="300px" 

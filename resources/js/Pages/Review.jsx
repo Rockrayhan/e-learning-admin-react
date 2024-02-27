@@ -23,7 +23,7 @@ const Review = ({myreview, userData}) => {
 
             <div className="comment-form">
             <h4>Leave a Reply</h4>
-            <form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
+            <form className="max-w-sm mx-auto" action={route('review.store')} method='post'>
             <input type="hidden" name="_token" value={token} />
 
             {/* student ID */}

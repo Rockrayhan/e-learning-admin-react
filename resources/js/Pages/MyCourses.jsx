@@ -63,7 +63,7 @@ const MyCourses = ({ userData, products }) => {
     <div className="properties__card">
     <div className="properties__img overlay1">
     <a href="#"><img 
-    src={"images/" + item.image}
+    src="https://fireship.io/courses/sveltekit/img/featured.webp"
     height="300px" 
     width="200px" 
     alt={item.name} 

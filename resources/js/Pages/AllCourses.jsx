@@ -61,7 +61,7 @@ products.map( item=>
 <div className="col-lg-4">
 <div className="properties properties2 mb-30 ">
 <div className="properties__card">
-<div className="properties__img overlay1">
+<div style={{height:'500px'}} className="properties__img overlay1">
 <a href="#"><img 
 src={"images/" + item.image}
 height="300px" 

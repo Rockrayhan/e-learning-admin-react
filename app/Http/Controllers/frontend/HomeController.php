@@ -52,7 +52,7 @@ class HomeController extends Controller
             'user' => $user,
             'token' => $token,
         ];
-        return Inertia::render('About');
+        return Inertia::render('About', compact('userData'));
     
     }
 

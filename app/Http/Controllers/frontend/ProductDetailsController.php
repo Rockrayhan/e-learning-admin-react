@@ -32,7 +32,6 @@ class ProductDetailsController extends Controller
         // return view('frontend.productDetails', compact('products', 'ordered', 'quiz'));
         return Inertia::render('ProductDetails', 
         [
-            'user' => $user,
             'products' => $products,
             'ordered' => $ordered,
             'userData' => $userData,

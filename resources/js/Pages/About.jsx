@@ -2,10 +2,10 @@ import React from 'react';
 import Footer from './Shared/Footer';
 import Header from './Shared/Header';
 
-const About = () => {
+const About = ({userData}) => {
     return (
         <div>
-           <Header></Header>
+           <Header userData={userData}></Header>
        <div>
   {/*? slider Area Start*/}
   <section className=" slider-area2">

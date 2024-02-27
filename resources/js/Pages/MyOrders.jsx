@@ -1,6 +1,7 @@
 import React from "react";
 import Header from "./Shared/Header";
 import Footer from "./Shared/Footer";
+import { Link } from "@inertiajs/react";
 // import { Link } from "@inertiajs/react";
 
 const MyOrders = ({ userData, orders }) => {
@@ -33,11 +34,12 @@ const MyOrders = ({ userData, orders }) => {
                                     <tr>
                                         <td> # </td>
                                         <td> {item.product_name}  </td>
-                                        <td> {item.created_at}  </td>
+                                        <td>{new Date(item.created_at).toLocaleDateString()}</td>
                                         <td> {item.payment}  </td>
                                         <td> {item.price}  </td>
                                         <td> {item.t_id}  </td>
-                                        <td> <a href={'invoice/' + item.id}> Invoice  </a> </td>
+                                        {/* <td> <a className="text-primary fontw-bold" href={'invoice/' + item.id}> Invoice  </a> </td> */}
+                                        <td> <Link className="text-primary fontw-bold" href={'/invoice/' + item.id}> Invoice  </Link> </td>
     
                                     </tr> 
                                     )
