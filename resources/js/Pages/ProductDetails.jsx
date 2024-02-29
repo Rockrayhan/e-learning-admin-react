@@ -6,7 +6,7 @@ import Header from './Shared/Header';
 import { useForm } from '@inertiajs/react';
 import { Col, Nav, Row, Tab } from 'react-bootstrap';
 
-const ProductDetails = ({products,userData, ordered}) => {
+const ProductDetails = ({products,userData, ordered, pending}) => {
   const { data, setData, post } = useForm();
 
     const handleSubmit = (e) => {
@@ -76,16 +76,29 @@ const ProductDetails = ({products,userData, ordered}) => {
             </div>
           </div>
 
-      {
-        ordered ? <div> Your contents are here </div> : 
-        <div>     
-              {/*  Modal Button Trigger  */}
-        <button type="button" class="btn btn-success px-4 py-3 mt-5" data-toggle="modal"
-            data-target="#exampleModal">
-            Enroll Now
-        </button> 
-        </div>
-      }
+   
+
+
+
+
+{
+  ordered ? (
+    <div>Your contents are here</div>
+  ) : pending ? (
+    <div>
+      <h1 className='bg-warning p-4'>Your order is on pending</h1>
+    </div>
+  ) : (
+    <button
+      type="button"
+      className="btn btn-success px-4 py-3 mt-5"
+      data-toggle="modal"
+      data-target="#exampleModal"
+    >
+      Enroll Now
+    </button>
+  )
+}
 
 
 
@@ -143,7 +156,7 @@ const ProductDetails = ({products,userData, ordered}) => {
                 <img src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA" width="50%" height="80px" alt />
                 <img src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg" width="50%" height="80px" alt />
               </div>
-              <div className="d-flex">
+              <div className="d-flex justify-around">
                 <input type="radio" name="payment" defaultValue="bkash" className="form-control" onChange={(e) => setData("payment", e.target.value)}/>
                 <input type="radio" name="payment" defaultValue="nagad" className="form-control" onChange={(e) => setData("payment", e.target.value)}/>
               </div>

@@ -17,8 +17,9 @@ class ProductDetailsController extends Controller
      */
     public function index($id)
     {
-        $student_id = Auth::guard('student')->user()->id;
-        $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->first();
+        $student_id = Auth::guard('student')->user()->id ?? '';
+        $ordered = Order::where('student_id', $student_id)->where('product_id', $id)->where('status' , 1)->first();
+        $pending = Order::where('student_id', $student_id)->where('product_id', $id)->where('status' , 0)->first();
         $products = Product::find($id);
         $products->load('lesson');
         $quiz = Quiz::all();
@@ -35,6 +36,7 @@ class ProductDetailsController extends Controller
             'products' => $products,
             'ordered' => $ordered,
             'userData' => $userData,
+            'pending' => $pending,
         ]);
     }
 

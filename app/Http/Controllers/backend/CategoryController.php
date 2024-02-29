@@ -15,20 +15,10 @@ class CategoryController extends Controller
     public function index()
     {
         $cats = Category::all();
-        return Inertia::render('Home', [
-            'cats' => $cats,
-        ]);
+        return view('backend.category.index', compact('cats')) ;
     
     }
 
-    public function about()
-    {
-        $cats = Category::all();
-        return Inertia::render('About', [
-            'cats' => $cats,
-        ]);
-    
-    }
 
     /**
      * Show the form for creating a new resource.
