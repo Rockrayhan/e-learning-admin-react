@@ -6,6 +6,7 @@ use App\Http\Controllers\backend\InvoiceController;
 use App\Http\Controllers\backend\MessageController;
 use App\Http\Controllers\backend\OrderController;
 use App\Http\Controllers\backend\QuizController;
+use App\Http\Controllers\EnrollController;
 use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\frontend\ProductController;
 use App\Http\Controllers\frontend\ProductDetailsController;
@@ -36,10 +37,9 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/all-courses', [HomeController::class, 'allcourses']);
-Route::get('/productDetails/{id}', [ProductDetailsController::class, 'index'])->name('productDetails');
-
-// ->middleware('student')
-
+Route::get('/productDetails/{id}', [ProductDetailsController::class, 'index']);
+// ->middleware('student');
+Route::get('/enroll/{id}', [EnrollController::class, 'index'])->middleware('student');
 
 
 //frontend Orders

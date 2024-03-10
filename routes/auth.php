@@ -70,7 +70,7 @@ Route::middleware('auth')->group(function () {
 
 // Products 
 Route::get('product', [ProductController::class, 'index'])->name('product');
-Route::get('product/create', [ProductController::class, 'create'])->name('product');
+Route::get('product/create', [ProductController::class, 'create'])->name('product.create');
 Route::post('product/store', [ProductController::class, 'store'])->name('product.store');
 Route::get('product/edit/{id}', [ProductController::class, 'edit'])->name('product.edit');
 Route::post('product/update/{id}', [ProductController::class, 'update'])->name('product.update');
@@ -92,7 +92,7 @@ Route::get('category/delete/{id}', [CategoryController::class, 'destroy'])->name
 
 // catalogue 
 Route::get('catelogue', [CatelogueController::class, 'index'])->name('catelogue');
-Route::get('catelogue/create', [CatelogueController::class, 'create'])->name('catelogue');
+Route::get('catelogue/create', [CatelogueController::class, 'create'])->name('cateloguel.create');
 Route::post('catelogue/store', [CatelogueController::class, 'store'])->name('catelogue.store');
 Route::get('catelogue/edit/{id}', [CatelogueController::class, 'edit'])->name('catelogue.edit');
 Route::post('catelogue/update/{id}', [CatelogueController::class, 'update'])->name('catelogue.update');
@@ -101,7 +101,7 @@ Route::get('catelogue/delete/{id}', [CatelogueController::class, 'destroy'])->na
 
 // Manufacturers
 Route::get('manufacturer', [ManufacturerController::class, 'index'])->name('manufacturer');
-Route::get('manufacturer/create', [ManufacturerController::class, 'create'])->name('manufacturer');
+Route::get('manufacturer/create', [ManufacturerController::class, 'create'])->name('manufacturer.create');
 Route::post('manufacturer/store', [ManufacturerController::class, 'store'])->name('manufacturer.store');
 Route::get('manufacturer/edit/{id}', [ManufacturerController::class, 'edit'])->name('manufacturer.edit');
 Route::post('manufacturer/update/{id}', [ManufacturerController::class, 'update'])->name('manufacturer.update');
@@ -111,7 +111,7 @@ Route::get('manufacturer/delete/{id}', [ManufacturerController::class, 'destroy'
 
 // Lessons
 Route::get('lesson', [LessonController::class, 'index'])->name('lesson');
-Route::get('/lesson/mylesson', [LessonController::class, 'myLesson'])->name('lesson');
+Route::get('/lesson/mylesson', [LessonController::class, 'myLesson'])->name('mylesson');
 Route::get('lesson/create', [LessonController::class, 'create'])->name('lesson.create');
 Route::post('lesson/store', [LessonController::class, 'store'])->name('lesson.store');
 Route::get('lesson/edit/{id}', [LessonController::class, 'edit'])->name('lesson.edit');
@@ -121,8 +121,8 @@ Route::get('lesson/delete/{id}', [LessonController::class, 'destroy'])->name('le
 
 
 // Review
-Route::get('review', [ReviewController::class, 'index'])->name('lesson');
-Route::get('/review/myreview', [ReviewController::class, 'myReview'])->name('lesson');
+Route::get('review', [ReviewController::class, 'index'])->name('review');
+Route::get('/review/myreview', [ReviewController::class, 'myReview']);
 Route::get('review/create', [ReviewController::class, 'create'])->name('review.create');
 Route::post('review/store', [ReviewController::class, 'store'])->name('review.store');
 Route::get('review/edit/{id}', [ReviewController::class, 'edit'])->name('review.edit');
@@ -133,7 +133,7 @@ Route::get('review/delete/{id}', [ReviewController::class, 'destroy'])->name('re
 
 
 // Instructors
-Route::get('instructor', [InstructorController::class, 'show'])->name('category');
+Route::get('instructor', [InstructorController::class, 'show'])->name('instructor');
 Route::get('instructor/create', [InstructorController::class, 'create'])->name('instructor.create');  // available this only for admin
 Route::get('/instructor/mycourses', [InstructorController::class, 'myCourses'])->name('instructor.mycourses');
 Route::post('instructor/store', [InstructorController::class, 'store'])->name('instructor.store');

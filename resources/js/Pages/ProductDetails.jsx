@@ -1,6 +1,6 @@
 import React from 'react';
 import Footer from './Shared/Footer';
-import { usePage } from '@inertiajs/react';
+import { Link, usePage } from '@inertiajs/react';
 import NavLink from '@/Components/NavLink';
 import Header from './Shared/Header';
 import { useForm } from '@inertiajs/react';
@@ -89,14 +89,18 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
       <h1 className='bg-warning p-4'>Your order is on pending</h1>
     </div>
   ) : (
-    <button
+    <Link href={'/enroll/' + products.id}>
+ <button
       type="button"
       className="btn btn-success px-4 py-3 mt-5"
-      data-toggle="modal"
-      data-target="#exampleModal"
+      // data-toggle="modal"
+      // data-target="#exampleModal"
+
     >
       Enroll Now
     </button>
+    </Link>
+   
   )
 }
 
