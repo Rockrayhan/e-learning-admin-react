@@ -53,7 +53,7 @@ const Header = ({userData}) => {
                          </span> 
                         : 
                         <span>
-                            <li className="button-header"><a href="/student/login" className="btn btn3">Log in</a></li>
+                            <li className="button-header"><Link href="/student/login" className="btn btn3">Log in</Link></li>
                           </span>
                         }
                         <li>

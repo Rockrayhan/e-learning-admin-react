@@ -1,7 +1,5 @@
 import React from "react";
-import Header from "./Shared/Header";
-import Footer from "./Shared/Footer";
-import { useForm } from "@inertiajs/react";
+import { useForm, Link } from "@inertiajs/react";
 
 const Login = () => {
     const { data, setData, post, errors } = useForm();
@@ -12,49 +10,56 @@ const Login = () => {
     };
     return (
         <div>
-            <Header />
+                <h1 className="text-center mt-5 text-4xl"> Please Login </h1>
+            
 
-            <div className="mt-5">
-                <h1 className="text-center"> Please Login </h1>
+                <div className="container-fluid">
+    <div className="row">
+        <div className="col-lg-6 d-flex align-items-center justify-content-center ">
+            <img className="img-fluid w-75" src="https://img.freepik.com/free-vector/login-concept-illustration_114360-739.jpg" alt="Login" />
+        </div>
+        <div className="col-lg-6 d-flex align-items-center justify-content-center">
+            <div className="login-form-wrapper">
                 <form
-                    className="space-y-6"
+                    className="login-form"
                     onSubmit={submit}
-                    method="POST"
-                    action={route("student.login")}
-                    style={{
-                        border: "2px solid black",
-                        marginLeft: "50px",
-                        marginTop: "50px",
-                    }}
+                    // method="POST"
+                    // action={route("student.login")}
                 >
-                    <div className="row my-3">
+                    <div className="mb-3">
                         <input
                             type="text"
+                            className="form-control"
                             name="email"
                             value={data.email}
                             placeholder="Enter Email"
                             onChange={(e) => setData("email", e.target.value)}
                         />
                     </div>
-                    <div className="row my-3">
+                    <div className="mb-3">
                         <input
-                            type="text"
+                            type="password"
+                            className="form-control"
                             name="password"
                             placeholder="Enter Password"
                             value={data.password}
-                            onChange={(e) =>
-                                setData("password", e.target.value)
-                            }
+                            onChange={(e) => setData("password", e.target.value)}
                         />
                     </div>
                     <button className="btn btn-warning" type="submit">
-                        {" "}
-                        SUBMIT{" "}
+                        Submit
                     </button>
+        
+           <div className="mt-3"> 
+            <Link className="text-blue-600 font-bold" href='/student/register'> New User ? Please Register </Link>
+            </div>
                 </form>
             </div>
+        </div>
+    </div>
+</div>
 
-            <Footer />
+
         </div>
     );
 };

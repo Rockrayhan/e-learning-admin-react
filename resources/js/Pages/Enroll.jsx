@@ -1,15 +1,16 @@
 import React from 'react';
-
+import Header from './Shared/Header';
+import Footer from './Shared/Footer';
 const Enroll = ({products,userData}) => {
       const { user, token } = userData;
       console.log(user.id);
       console.log(products);
     return (
         <div>
-            
+            <Header userData={userData}></Header>
             <h1> Enroll Now Mr. {user.name} For the {products.name} Course </h1>
 
-            <div className="enroll-content">
+            <div className="enroll-content container w-75">
           <h2 className="mb-4"> Enroll Now </h2>
 
           <form method="POST" action={ route('orders.store') } className="mb-4">
@@ -48,8 +49,8 @@ const Enroll = ({products,userData}) => {
             <div className="form-group">
               <label> Make Payment at: +880 168201 1307 </label> <br />
               <div className="d-flex">
-                <img src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA" width="50%" height="80px" alt />
-                <img src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg" width="50%" height="80px" alt />
+                <img className='img-fluid w-25' src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA" width="50%" height="80px" alt />
+                <img className='img-fluid w-25' src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg" width="50%" height="80px" alt />
               </div>
               <div className="d-flex justify-around">
                 <input type="radio" name="payment" defaultValue="bkash" className="form-control" onChange={(e) => setData("payment", e.target.value)}/>
@@ -63,6 +64,7 @@ const Enroll = ({products,userData}) => {
             <button type="submit" className="btn btn-primary px-5">Enroll</button>
           </form>
         </div>
+        <Footer></Footer>
         </div>
     );
 };

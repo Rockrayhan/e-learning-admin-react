@@ -15,14 +15,15 @@ class StudentController extends Controller
 {
     public function index(){
 
-        // return Inertia::render('Login');
+        return Inertia::render('Login');
 
-        return view('backend.student.login');
+        // return view('backend.student.login');
 
     }
 
     public function create(){
-        return view('backend.student.register');
+        // return view('backend.student.register');
+        return Inertia::render('Register');
     }
 
     public function store(Request $request){
