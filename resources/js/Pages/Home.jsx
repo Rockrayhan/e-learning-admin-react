@@ -7,8 +7,9 @@ import Footer from './Shared/Footer';
 
 
 const Home = (props) => {
-    const {products, categories, reviews, students, userData } = usePage().props ;
+    const {products, categories, reviews, students, userData, loginMsg } = usePage().props ;
     const { user, token } = userData;
+    console.log(loginMsg);
     // console.log(products);
     // console.log(reviews);
     console.log(user.name);
@@ -31,6 +32,17 @@ const Home = (props) => {
 
 <Header userData={userData} ></Header>
   <main>
+
+  {
+            loginMsg && <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong> {loginMsg} </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          }
+
+
     {/*? slider Area Start*/}
     <section className="slider-area ">
       <div className="slider-active">
@@ -106,9 +118,10 @@ const Home = (props) => {
             {
                 products.map( item=>          
                  <div className="properties ">
+                  <Link href={'/productDetails/' + item.id}>
                 <div className="properties__card">
-                  <div style={{height:'500px'}} className="properties__img overlay1">
-                    <a href="#"><img 
+                  <div style={{height:'400px'}}>
+                    <a><img 
                     src={"images/" + item.image}
                     height="300px" 
                     width="200px" 
@@ -118,7 +131,7 @@ const Home = (props) => {
                   <div className="properties__caption">
                     <p> {CategoryName(item.category_id)} </p>
 
-                    <h3><Link href={'/productDetails/' + item.id}>{item.name}</Link></h3>
+                    <h3>{item.name}</h3>
                     <p>
                         {item.description}
                     </p>
@@ -137,9 +150,10 @@ const Home = (props) => {
                         <span>${item.price} </span>
                       </div>
                     </div>
-                    <a href="#" className="border-btn border-btn2">Find out more</a>
+                    <a className="border-btn border-btn2">Find out more</a>
                   </div>
                 </div>
+                </Link>
               </div> 
             
               )

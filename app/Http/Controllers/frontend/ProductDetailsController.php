@@ -30,13 +30,18 @@ class ProductDetailsController extends Controller
             'user' => $user,
             'token' => $token,
         ];
+
+        $enrolledCount = Order::where('product_id', $id)
+        ->where('status', 1) // Assuming 1 is for confirmed orders
+        ->count();
         // return view('frontend.productDetails', compact('products', 'ordered', 'quiz'));
         return Inertia::render('ProductDetails', 
         [
             'products' => $products,
             'ordered' => $ordered,
-            'userData' => $userData,
             'pending' => $pending,
+            'userData' => $userData,
+            'enrolledCount' => $enrolledCount,
         ]);
     }
 

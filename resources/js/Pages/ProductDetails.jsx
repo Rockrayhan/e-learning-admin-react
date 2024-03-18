@@ -1,19 +1,10 @@
 import React from 'react';
 import Footer from './Shared/Footer';
 import { Link, usePage } from '@inertiajs/react';
-import NavLink from '@/Components/NavLink';
 import Header from './Shared/Header';
-import { useForm } from '@inertiajs/react';
 import { Col, Nav, Row, Tab } from 'react-bootstrap';
 
-const ProductDetails = ({products,userData, ordered, pending}) => {
-  const { data, setData, post } = useForm();
-
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      post(route('orders.store'), data);
-    };
-    // const {products} = usePage().props
+const ProductDetails = ({products,userData, ordered, pending, enrolledCount}) => {
     const { user, token } = userData;
     console.log(user.id);
     console.log(products);
@@ -27,7 +18,7 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
       {/* Single Slider */}
       <div className="">
         <div className="container">
-          <div className="row">
+          <div className="row container">
             <div className="col-xl-8 col-lg-11 col-md-12">
               <div className="hero__caption hero__caption2">
                 <h1 data-animation="bounceIn" data-delay="0.2s">Course Details</h1>
@@ -50,7 +41,7 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
   <section className="blog_area single-post-area">
     <div className="container">
       <div className="row">
-        <div className="col-lg-8 posts-list">
+        <div className="col-lg-6 posts-list">
           <div className="single-post">
             <div className="feature-img">
               <img  className="img-fluid" width={'400px'} src={"../images/" + products.image} alt='no img' />
@@ -60,13 +51,12 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
               {products.name} 
               </h2>
               <ul className="blog-info-link mt-3 mb-4">
-                <li><a href="#"><i className="fa fa-user" /> Travel, Lifestyle</a></li>
-                <li><a href="#"><i className="fa fa-comments" /> 03 Comments</a></li>
+                <li> Student Enrolled: {enrolledCount} </li>
               </ul>
-              <p className="excert">
+              <p className="excert my-2">
               {products.description} 
 
-              <h3> What You will Learn </h3> 
+              <h3 className='my-3'> What You will Learn </h3> 
               <ul>
         {products.lesson.map(lesson => (
           <li style={{listStyleType:'circle'}} key={lesson.id}> {lesson.name} </li>
@@ -75,11 +65,6 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
               </p>
             </div>
           </div>
-
-   
-
-
-
 
 {
   ordered ? (
@@ -93,9 +78,6 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
  <button
       type="button"
       className="btn btn-success px-4 py-3 mt-5"
-      // data-toggle="modal"
-      // data-target="#exampleModal"
-
     >
       Enroll Now
     </button>
@@ -105,80 +87,6 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
 }
 
 
-
-      {/* =======================  modal content ==================== */}
-
-      <div className="modal fade" id="exampleModal" tabIndex={-1} aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div className="modal-dialog">
-    <div className="modal-content">
-      <div className="modal-header">
-        <h5 className="modal-title" id="exampleModalLabel">Enroll Now</h5>
-        <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">×</span>
-        </button>
-      </div>
-      <div className="modal-body">
-        <div className="enroll-content">
-          <h2 className="mb-4"> Enroll Now </h2>
-
-          <form method="POST" action={ route('orders.store') } className="mb-4">
-          <input type="hidden" name="_token" value={token} />
-
-            <div className="form-group">
-              <label htmlFor="student_name">Name:</label>
-              <input type="text" name="student_name" className="form-control" placeholder="Enter Your Name" defaultValue={ user.name} onChange={(e) => setData("student_name", e.target.value)} />
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone">Phone:</label>
-              <input type="text" name="phone" className="form-control" placeholder="Enter Phone" onChange={(e) => setData("phone", e.target.value)}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="phone">Email:</label>
-              <input type="text" name="email" className="form-control" placeholder="Enter Email" onChange={(e) => setData("email", e.target.value)}/>
-            </div>
-
-            <div className="form-group">
-              <label htmlFor="product_name">Product Name:</label>
-              <input type="text" name="product_name" className="form-control" defaultValue={products.name} readOnly onChange={(e) => setData("product_name", e.target.value)}/>
-            </div>
-
-            {/* get student id  */}
-            <input type="text" name="student_id" defaultValue={ user.id } /> <br />
-
-            {/* get product id */}
-            <input type="text" name="product_id" defaultValue={ products.id } />
-
-            <div className="form-group">
-              <label htmlFor="product_name">Product Price:</label>
-              <input type="text" name="price" className="form-control" defaultValue={products.price } readOnly onChange={(e) => setData("price", e.target.value)}/>
-            </div>
-            <div className="form-group">
-              <label> Make Payment at: +880 168201 1307 </label> <br />
-              <div className="d-flex">
-                <img src="https://lh3.googleusercontent.com/t_AmjRLX3-4Aoss0ABhG28QvdQ760Fl3h3TLicJYWjQQutrgaZXfxD8ih1K3MeF6fA" width="50%" height="80px" alt />
-                <img src="https://www.logodee.com/wp-content/uploads/2021/10/31.jpg" width="50%" height="80px" alt />
-              </div>
-              <div className="d-flex justify-around">
-                <input type="radio" name="payment" defaultValue="bkash" className="form-control" onChange={(e) => setData("payment", e.target.value)}/>
-                <input type="radio" name="payment" defaultValue="nagad" className="form-control" onChange={(e) => setData("payment", e.target.value)}/>
-              </div>
-              <div>
-                <label htmlFor="product_name">Enter Your Transaction ID</label>
-                <input type="text" name="t_id" className="form-control" onChange={(e) => setData("t_id", e.target.value)}/>
-              </div>
-            </div>
-            <button type="submit" className="btn btn-primary px-5">Enroll</button>
-          </form>
-        </div>
-      </div>
-      <div className="modal-footer">
-        <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
 
 
 {/* pro Content Available only for Purchased one */}
@@ -219,38 +127,6 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
 
 
 }
-
-
-          <div className="comment-form">
-            <h4>Leave a Reply</h4>
-            <form className="form-contact comment_form" action="#" id="commentForm">
-              <div className="row">
-                <div className="col-12">
-                  <div className="form-group">
-                    <textarea className="form-control w-100" name="comment" id="comment" cols={30} rows={9} placeholder="Write Comment" defaultValue={""} />
-                  </div>
-                </div>
-                <div className="col-sm-6">
-                  <div className="form-group">
-                    <input className="form-control" name="name" id="name" type="text" placeholder="Name" />
-                  </div>
-                </div>
-                <div className="col-sm-6">
-                  <div className="form-group">
-                    <input className="form-control" name="email" id="email" type="email" placeholder="Email" />
-                  </div>
-                </div>
-                <div className="col-12">
-                  <div className="form-group">
-                    <input className="form-control" name="website" id="website" type="text" placeholder="Website" />
-                  </div>
-                </div>
-              </div>
-              <div className="form-group">
-                <button type="submit" className="button button-contactForm btn_1 boxed-btn">Post Comment</button>
-              </div>
-            </form>
-          </div>
         </div>
         <div className="col-lg-4">
           <div className="blog_right_sidebar">
@@ -263,10 +139,6 @@ const ProductDetails = ({products,userData, ordered, pending}) => {
           <li key={lesson.id}> {lesson.name} </li>
         ))}
       </ul>
-            
-          
-              
-               
               </ul>
             </aside>
           </div>

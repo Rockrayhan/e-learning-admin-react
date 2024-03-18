@@ -55,7 +55,7 @@ class StudentController extends Controller
         // dd($request->all()) ;
         if(Auth::guard('student')->attempt(['email'=>$request->email,
         "password"=>$request->password])){
-            return redirect('/') ;
+            return redirect('/')->with('loginMsg', 'SuccessFully Logged In') ;
         } else {
             return redirect()->route('student_login_form');
            

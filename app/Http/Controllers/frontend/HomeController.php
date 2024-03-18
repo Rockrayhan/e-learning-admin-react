@@ -30,6 +30,7 @@ class HomeController extends Controller
             'user' => $user,
             'token' => $token,
         ];
+        $loginMsg = session('loginMsg');
         return Inertia::render('Home', 
         [
             'manufacturers' => $manufacturers,
@@ -39,6 +40,7 @@ class HomeController extends Controller
             'students' => $students,
             'students' => $students,
             'userData' => $userData,
+            'loginMsg' => $loginMsg,
 
         ]);
     }
@@ -67,10 +69,11 @@ class HomeController extends Controller
             'user' => $user,
             'token' => $token,
         ];
+        $enrollMsg = session('EnrollMsg');
         $products = Product::all();
         $categories = Category::all();
         // return view('frontend.AllCourses', compact('products'));
-        return Inertia::render('AllCourses' , compact('userData' ,'products', 'categories' ));
+        return Inertia::render('AllCourses' , compact('userData' ,'products', 'categories', 'enrollMsg' ));
     }
     
 

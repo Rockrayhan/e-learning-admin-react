@@ -3,7 +3,7 @@ import Header from './Shared/Header';
 import Footer from './Shared/Footer';
 import { Link } from '@inertiajs/react';
 
-const AllCourses = ({ userData, products, categories }) => {
+const AllCourses = ({ userData, products, categories, enrollMsg }) => {
     const { user, token } = userData;
 
     const CategoryName = (id) => {
@@ -15,6 +15,15 @@ const AllCourses = ({ userData, products, categories }) => {
                     
             <Header userData={userData}></Header>
 
+
+            {
+            enrollMsg && <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <strong>  {enrollMsg}  </strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          }
 
                     
            <main>
@@ -59,46 +68,50 @@ const AllCourses = ({ userData, products, categories }) => {
 {
 products.map( item=>          
 <div className="col-lg-4">
-<div className="properties properties2 mb-30 ">
-<div className="properties__card">
-<div style={{height:'500px'}} className="properties__img overlay1">
-<a href="#"><img 
-src={"images/" + item.image}
-height="300px" 
-width="200px" 
-alt={item.name} 
-/></a>
-</div>
-<div className="properties__caption">
-<p> {CategoryName(item.category_id)} </p>
+<div className="properties ">
+                  <Link href={'/productDetails/' + item.id}>
+                <div className="properties__card">
+                  <div style={{height:'400px'}}>
+                    <a><img 
+                    src={"images/" + item.image}
+                    height="" 
+                    width="" 
+                    alt={item.name} 
+                /></a>
+                  </div>
+                  <div className="properties__caption">
+                    <p> {CategoryName(item.category_id)} </p>
 
-<h3><Link href={'/productDetails/' + item.id}>{item.name}</Link></h3>
-<p>
-{item.description}
-</p>
-<div className="properties__footer d-flex justify-content-between align-items-center">
-<div className="restaurant-name">
-<div className="rating">
-<i className="fas fa-star" />
-<i className="fas fa-star" />
-<i className="fas fa-star" />
-<i className="fas fa-star" />
-<i className="fas fa-star-half" />
-</div>
-<p><span>(4.5)</span> based on 120</p>
-</div>
-<div className="price">
-<span>${item.price} </span>
-</div>
-</div>
-<a href="#" className="border-btn border-btn2">Find out more</a>
-</div>
-</div>
-</div> 
+                    <h3>{item.name}</h3>
+                    <p>
+                        {item.description}
+                    </p>
+                    <div className="properties__footer d-flex justify-content-between align-items-center">
+                      <div className="restaurant-name">
+                        <div className="rating">
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star" />
+                          <i className="fas fa-star-half" />
+                        </div>
+                        <p><span>(4.5)</span> based on 120</p>
+                      </div>
+                      <div className="price">
+                        <span>${item.price} </span>
+                      </div>
+                    </div>
+                    <a className="border-btn border-btn2">Find out more</a>
+                  </div>
+                </div>
+                </Link>
+              </div> 
 </div>
 
 )
 }
+
+
 
 </div>
       </div>

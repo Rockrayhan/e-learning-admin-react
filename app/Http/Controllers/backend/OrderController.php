@@ -59,7 +59,7 @@ class OrderController extends Controller
 
         $model = new Order();
         if( $model->insert($data)){
-            return back()->with('msg' , 'successfully Enrolled. Your Courses Will be available soon');
+            return redirect('all-courses')->with('EnrollMsg' , 'successfully Enrolled. Your Courses Will be available soon');
         }
     //   }
     }
